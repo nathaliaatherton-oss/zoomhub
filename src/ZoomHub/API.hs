@@ -716,6 +716,7 @@ webLogin = webAuthRedirect Prompt.Login
 
 webAuthRedirect :: Prompt -> Kinde.Config -> ClientSession.Key -> Handler SetCookieAndRedirect
 webAuthRedirect prompt kindeConfig clientSessionKey = do
+  -- TODO: Check for existing session
   state <- liftIO generateState
   setCookieHeader <- liftIO $ API.oauth2StateCookieHeader clientSessionKey state
   let authorizationRedirectURI =
