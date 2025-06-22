@@ -5,8 +5,14 @@
 - Infrastructure:
   - Update `haskell-actions` `ghc-version` from `8.6.5` to `9.6.3`.
   - Set `AWS_REGION` explicitly via environment variable.
-  - Improve shutdown of `./zh run`.
   - Switch from custom `lenientDecodeUtf8` to `decodeUtf8Lenient`.
+  - Add environment variable template (`.env.template`).
+  - Improve shutdown handling in `./zh run` with proper signal handling.
+  - Update `concurrently` from `6.3.0` to `8.2.2`.
+  - Enhance database scripts and test data.
+  - Improve AWS deployment configuration to use dynamic regions.
+  - Reorganize authentication modules for better structure.
+  - Add new utility functions (`hush`, `appendQueryParams`).
 
 ## 2024-04-25-1
 
