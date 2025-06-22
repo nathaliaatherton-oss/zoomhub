@@ -9,7 +9,6 @@ module ZoomHub.APISpec
   )
 where
 
-import qualified Amazonka as AWS
 import Control.Concurrent (getNumCapabilities)
 import qualified Data.ByteString.Char8 as BC
 import Data.Maybe (fromJust)

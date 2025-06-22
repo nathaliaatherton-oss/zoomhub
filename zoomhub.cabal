@@ -26,7 +26,6 @@ library
     , URI.ByteString.Instances
     , ZoomHub.API
     , ZoomHub.API.ContentTypes.JavaScript
-    , ZoomHub.API.Cookie
     , ZoomHub.API.Errors
     , ZoomHub.API.JSONP.Errors
     , ZoomHub.API.Types.Callback
@@ -38,13 +37,6 @@ library
     , ZoomHub.API.Types.JSONP
     , ZoomHub.API.Types.NonRESTfulResponse
     , ZoomHub.Authentication.Basic
-    , ZoomHub.Authentication.Cookie
-    , ZoomHub.Authentication.OAuth
-    , ZoomHub.Authentication.OAuth.Kinde
-    , ZoomHub.Authentication.OAuth.Kinde.OAuth2CodeExchangeResponse
-    , ZoomHub.Authentication.OAuth.Kinde.Prompt
-    , ZoomHub.Authentication.OAuth.Kinde.TokenCollection
-    , ZoomHub.Authentication.Session
     , ZoomHub.AWS
     , ZoomHub.AWS.S3
     , ZoomHub.AWS.S3.POSTPolicy
@@ -52,7 +44,6 @@ library
     , ZoomHub.AWS.S3.POSTPolicy.Error
     , ZoomHub.Config
     , ZoomHub.Config.AWS
-    , ZoomHub.Config.Kinde
     , ZoomHub.Config.ProcessContent
     , ZoomHub.Config.Uploads
     , ZoomHub.Debug
@@ -62,13 +53,10 @@ library
     , ZoomHub.Log.LogLevel
     , ZoomHub.Log.RequestLogger
     , ZoomHub.Servant.RequiredQueryParam
-    , ZoomHub.Squeal.Citext
     , ZoomHub.Storage.PostgreSQL
     , ZoomHub.Storage.PostgreSQL.ConnectInfo
-    , ZoomHub.Storage.PostgreSQL.Dashboard
     , ZoomHub.Storage.PostgreSQL.GetRecent
     , ZoomHub.Storage.PostgreSQL.Internal
-    , ZoomHub.Storage.PostgreSQL.Internal.User
     , ZoomHub.Storage.PostgreSQL.Schema
     , ZoomHub.Storage.PostgreSQL.Schema.Schema0
     , ZoomHub.Storage.PostgreSQL.Schema.Schema1
@@ -76,8 +64,6 @@ library
     , ZoomHub.Storage.PostgreSQL.Schema.Schema3
     , ZoomHub.Storage.PostgreSQL.Schema.Schema4
     , ZoomHub.Storage.PostgreSQL.Schema.Schema5
-    , ZoomHub.Storage.PostgreSQL.Schema.Schema6
-    , ZoomHub.Storage.PostgreSQL.User
     , ZoomHub.Types.APIUser
     , ZoomHub.Types.BaseURI
     , ZoomHub.Types.Content
@@ -94,7 +80,6 @@ library
     , ZoomHub.Types.DeepZoomImage.TileSize
     , ZoomHub.Types.Environment
     , ZoomHub.Types.StaticBaseURI
-    , ZoomHub.Types.User
     , ZoomHub.Types.VerificationError
     , ZoomHub.Types.VerificationToken
     , ZoomHub.Utils
@@ -102,7 +87,6 @@ library
     , ZoomHub.Web.Main
     , ZoomHub.Web.MainDevelopment
     , ZoomHub.Web.Page
-    , ZoomHub.Web.Page.Dashboard
     , ZoomHub.Web.Page.EmbedContent
     , ZoomHub.Web.Page.ExploreRecentContent
     , ZoomHub.Web.Page.VerifyContent
@@ -243,7 +227,6 @@ test-suite tests
     ZoomHub.API.Types.ContentCompletionSpec
     ZoomHub.APISpec
     ZoomHub.AWSSpec
-    ZoomHub.Storage.PostgreSQL.UserSpec
     ZoomHub.Storage.PostgreSQLSpec
     ZoomHub.Types.ContentIdSpec
     ZoomHub.Types.ContentURISpec

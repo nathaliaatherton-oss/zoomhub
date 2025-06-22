@@ -22,7 +22,7 @@ import Data.Maybe (fromJust, fromMaybe)
 import Data.Proxy (Proxy (Proxy))
 import Data.Text (Text)
 import qualified Data.Text as T
-import Data.Text.Encoding (decodeUtf8)
+import Data.Text.Encoding (decodeUtf8Lenient)
 import qualified Data.Time as Time
 import qualified Data.UUID as UUID
 import qualified Data.UUID.V4 as UUIDV4
@@ -82,7 +82,7 @@ import ZoomHub.API.Types.NonRESTfulResponse
 import qualified ZoomHub.AWS.S3 as S3
 import qualified ZoomHub.AWS.S3.POSTPolicy as S3
 import qualified ZoomHub.AWS.S3.POSTPolicy.Condition as POSTPolicyCondition
-import qualified ZoomHub.Authentication as Authentication
+import qualified ZoomHub.Authentication.Basic as Authentication
 import ZoomHub.Config (Config)
 import qualified ZoomHub.Config as Config
 import qualified ZoomHub.Config.AWS as AWS
@@ -433,7 +433,7 @@ restUpload config awsConfig uploads email =
         Right policy -> do
           formData <-
             liftIO $
-              HS.map T.decodeUtf8Lenient
+              HS.map decodeUtf8Lenient
                 <$> S3.presignPOSTPolicy
                   (AWS.configAccessKeyId awsConfig)
                   (AWS.configSecretAccessKey awsConfig)
