@@ -98,7 +98,7 @@ webMain = do
   aws <-
     fromMaybe
       (error "ZoomHub.Main: Failed to parse AWS configuration.")
-      <$> AWSConfig.fromEnv AWS.Ohio -- TODO: Grab AWS region from environment?
+      <$> AWSConfig.fromEnv
   let logLevel = fromMaybe LogLevel.Debug $ lookup "LOG_LEVEL" env >>= LogLevel.parse
   let port = fromMaybe defaultPort (lookup "PORT" env >>= readMaybe)
       maybeProcessContent = ProcessContent.parse <$> lookup "PROCESS_CONTENT" env

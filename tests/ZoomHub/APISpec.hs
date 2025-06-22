@@ -144,7 +144,7 @@ config =
   Config
     { apiUser = authorizedUser,
       -- TODO: How can we avoid `unsafePerformIO`?
-      aws = fromJust $ unsafePerformIO $ AWSConfig.fromEnv AWS.Ohio,
+      aws = fromJust $ unsafePerformIO $ AWSConfig.fromEnv,
       baseURI = BaseURI (toURI "http://localhost:8000"),
       contentBaseURI = case mkContentBaseURI (toURI "http://localhost:9000/_dzis_") of
         Just uri -> uri

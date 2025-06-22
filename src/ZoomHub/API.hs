@@ -433,7 +433,7 @@ restUpload config awsConfig uploads email =
         Right policy -> do
           formData <-
             liftIO $
-              HS.map decodeUtf8
+              HS.map T.decodeUtf8Lenient
                 <$> S3.presignPOSTPolicy
                   (AWS.configAccessKeyId awsConfig)
                   (AWS.configSecretAccessKey awsConfig)
