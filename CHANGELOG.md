@@ -4,6 +4,7 @@
 
 - Infrastructure:
   - Update `haskell-actions` `ghc-version` from `8.6.5` to `9.6.3`.
+  - Update GitHub Actions to v4 (checkout, cache, upload/download-artifact).
   - Set `AWS_REGION` explicitly via environment variable.
   - Switch from custom `lenientDecodeUtf8` to `decodeUtf8Lenient`.
   - Add environment variable template (`.env.template`).

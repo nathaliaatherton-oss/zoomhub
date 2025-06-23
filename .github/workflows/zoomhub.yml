@@ -7,9 +7,9 @@ jobs:
   process-content-build:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Cache process-content Node.js dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         env:
           cache-name: process-content-node-dependencies
         with:
@@ -39,7 +39,7 @@ jobs:
         run: tar --create --verbose --gzip --file process-content-workspace.tar.gz workspace
 
       - name: Upload workspace
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: process-content-workspace
           path: process-content-workspace.tar.gz
@@ -60,7 +60,7 @@ jobs:
       ZH_API_USERNAME_PRODUCTION: ${{ secrets.ZH_API_USERNAME_PRODUCTION }}
     steps:
       - name: Download process-content-workspace
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: process-content-workspace
 
@@ -110,7 +110,7 @@ jobs:
           - 5432:5432
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: haskell/actions/setup@v1
         with:
           ghc-version: "9.6.3"
@@ -134,7 +134,7 @@ jobs:
 
       - name: Cache Haskell Stack dependencies
         id: cache-stack-dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         env:
           cache-name: cache-stack-dependencies-v4
         with:
@@ -147,7 +147,7 @@ jobs:
             web-build-v1-${{ runner.os }}-
 
       - name: Cache node_modules
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         env:
           cache-name: cache-node_modules
         with:
@@ -159,7 +159,7 @@ jobs:
 
       - name: Cache app binaries
         id: cache-stack-binaries
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         env:
           cache-name: cache-stack-binaries-v4
         with:
@@ -248,7 +248,7 @@ jobs:
         run: tar --create --verbose --gzip --file web-workspace.tar.gz workspace
 
       - name: Upload workspace
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: web-workspace
           path: web-workspace.tar.gz
@@ -275,7 +275,7 @@ jobs:
         if: github.ref != 'refs/heads/main'
 
       - name: Download web-workspace
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: web-workspace
 
