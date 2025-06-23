@@ -28,6 +28,6 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.4",
-    "axios": "^0.23.0"
+    "axios": "^1.10.0"
   }
 }
