@@ -132,9 +132,9 @@ jobs:
           echo "ZH_STATIC_BASE_URI=https://static.zoomhub.net" >> $GITHUB_ENV
         if: github.ref != 'refs/heads/main'
 
-      - name: Cache Haskell Stack dependencies
+      - name: Restore Haskell Stack dependencies cache
         id: cache-stack-dependencies
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         env:
           cache-name: cache-stack-dependencies-v5
         with:
@@ -168,9 +168,9 @@ jobs:
             web-build-v1-${{ runner.os }}-${{ env.cache-name }}-
             web-build-v1-${{ runner.os }}-
 
-      - name: Cache app binaries
+      - name: Restore app binaries cache
         id: cache-stack-binaries
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         env:
           cache-name: cache-stack-binaries-v5
         with:
@@ -223,6 +223,17 @@ jobs:
             --pedantic \
             --test
 
+      - name: Save Haskell Stack dependencies cache
+        if: steps.cache-stack-dependencies.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        env:
+          cache-name: cache-stack-dependencies-v5
+        with:
+          path: |
+            ~/.stack
+            .stack-work
+          key: web-build-v2-${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/stack.yaml.lock') }}
+
       - name: Build backend
         if: steps.cache-stack-binaries.outputs.cache-hit != 'true'
         run: |
@@ -236,6 +247,17 @@ jobs:
             --no-terminal \
             --pedantic \
             --test
+
+      - name: Save app binaries cache
+        if: steps.cache-stack-binaries.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        env:
+          cache-name: cache-stack-binaries-v5
+        with:
+          path: |
+            bin/zoomhub
+            bin/migrate-database
+          key: web-build-v2-${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/stack.yaml.lock') }}-${{ hashFiles('**/*.hs') }}
 
       - name: Run backend tests
         run: |
