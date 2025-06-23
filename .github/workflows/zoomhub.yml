@@ -178,10 +178,20 @@ jobs:
           SNOWPACK_PUBLIC_STATIC_BASE_URI="$ZH_STATIC_BASE_URI" \
             npx snowpack build
 
+          echo '=========================================================='
+          echo 'PRE: Haskell file deletion'
+          ls -laR frontend/
+          echo '=========================================================='
+
           # NOTE: Delete Haskell source code. This directory is only mounted in
           # Snowpack configuration to enable Tailwind CSS ’purge’ feature. These
           # files are not meant to be shipped to the public website.
           rm -rf frontend/build/__DELETE_ME__
+
+          echo '=========================================================='
+          echo 'POST: Haskell file deletion'
+          ls -laR frontend/
+          echo '=========================================================='
 
       - name: Build backend dependencies
         if: steps.cache-stack-dependencies.cache-hit != 'true'
