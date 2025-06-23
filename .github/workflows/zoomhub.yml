@@ -257,6 +257,7 @@ jobs:
           key: web-build-v2-${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/stack.yaml.lock') }}-${{ hashFiles('**/*.hs') }}
 
       - name: Run backend tests
+        if: steps.cache-stack-binaries.outputs.cache-hit != 'true'
         run: |
           HASHIDS_SALT='secret-salt' ./bin/migrate-database $PGDATABASE migrate
 
