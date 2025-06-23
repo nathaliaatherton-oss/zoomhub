@@ -9,12 +9,12 @@ module ZoomHub.Authentication.Basic
 where
 
 import Data.Aeson (FromJSON, ToJSON)
+import Data.Text.Encoding (decodeUtf8Lenient)
 import GHC.Generics (Generic)
 import Servant (BasicAuthData (BasicAuthData))
 import Servant.Auth.Server (AuthResult (Authenticated, NoSuchUser), BasicAuthCfg, FromBasicAuthData (fromBasicAuthData), FromJWT, ToJWT)
 import ZoomHub.Types.APIUser (APIUser (APIUser))
 import qualified ZoomHub.Types.APIUser as APIUser
-import Data.Text.Encoding (decodeUtf8Lenient)
 
 data AuthenticatedUser = AuthenticatedUser
   deriving (Show, Generic)

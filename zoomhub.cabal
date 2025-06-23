@@ -232,7 +232,6 @@ test-suite tests
     , amazonka-s3
     , base64
     , bytestring
-    , case-insensitive
     , generics-sop
     , hspec == 2.*
     , hspec-wai
