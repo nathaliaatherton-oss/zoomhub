@@ -146,17 +146,6 @@ jobs:
             web-build-v2-${{ runner.os }}-${{ env.cache-name }}-
             web-build-v2-${{ runner.os }}-
 
-      - name: Debug Stack dependencies cache
-        run: |
-          echo "Stack dependencies cache hit: ${{ steps.cache-stack-dependencies.outputs.cache-hit }}"
-          echo "Cache key: web-build-v2-${{ runner.os }}-cache-stack-dependencies-v5-${{ hashFiles('**/stack.yaml.lock') }}"
-          if [ -d ~/.stack ]; then
-            echo "Stack directory size: $(du -sh ~/.stack | cut -f1)"
-          fi
-          if [ -d .stack-work ]; then
-            echo "Stack work directory size: $(du -sh .stack-work | cut -f1)"
-          fi
-
       - name: Cache node_modules
         uses: actions/cache@v4
         env:
@@ -181,12 +170,6 @@ jobs:
           restore-keys: |
             web-build-v2-${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/stack.yaml.lock') }}-
             web-build-v2-${{ runner.os }}-${{ env.cache-name }}-
-
-      - name: Debug app binaries cache
-        run: |
-          echo "App binaries cache hit: ${{ steps.cache-stack-binaries.outputs.cache-hit }}"
-          echo "Binary files:"
-          ls -la bin/ 2>/dev/null || echo "bin/ directory not found"
 
       - name: Build frontend
         run: |
