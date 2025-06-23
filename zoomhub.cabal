@@ -123,11 +123,8 @@ library
     , blaze-builder
     , bytestring
     , case-insensitive
-    , clientsession
     , conduit
     , containers
-    , cookie
-    , crypton
     , data-default
     , directory
     , enclosed-exceptions
@@ -135,18 +132,15 @@ library
     , exceptions
     , fast-logger
     , filepath
-    , flow
     , foreign-store
     , generics-sop
     , hashids
-    , hoauth2
     , hostname
     , http-api-data
     , http-client
     , http-media
     , http-types
     , iproute
-    , jose
     , lens
     , lens-aeson
     , lucid
@@ -161,7 +155,6 @@ library
     , product-profunctors
     , random
     , raw-strings-qq
-    , regex-pcre
     , resource-pool
     , retry
     , safe
@@ -240,13 +233,10 @@ test-suite tests
     , base64
     , bytestring
     , case-insensitive
-    , clientsession
-    , flow
     , generics-sop
     , hspec == 2.*
     , hspec-wai
     , http-types
-    , jose
     , network-uri
     , postgresql-simple
     , process
