@@ -173,11 +173,25 @@ jobs:
 
       - name: Build frontend
         run: |
+          echo "Current directory: $(pwd)"
+          echo "Node version: $(node --version)"
+          echo "NPM version: $(npm --version)"
+          
           npm ci
+          
+          echo "Snowpack version:"
+          npx snowpack --version
+          
+          echo "Running snowpack build..."
           SNOWPACK_PUBLIC_API_BASE_URI="$ZH_API_BASE_URI" \
           SNOWPACK_PUBLIC_WEB_BASE_URI="$ZH_WEB_BASE_URI" \
           SNOWPACK_PUBLIC_STATIC_BASE_URI="$ZH_STATIC_BASE_URI" \
-            npx snowpack build
+            npx snowpack build --verbose
+          
+          echo "Build exit code: $?"
+          echo "Checking if frontend/build exists:"
+          ls -la frontend/ || echo "frontend/ directory not found"
+          ls -la frontend/build/ || echo "frontend/build/ directory not found"
 
           echo '=========================================================='
           echo 'PRE: Haskell file deletion'
