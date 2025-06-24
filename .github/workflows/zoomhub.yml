@@ -209,7 +209,7 @@ jobs:
           SNOWPACK_PUBLIC_API_BASE_URI="$ZH_API_BASE_URI" \
           SNOWPACK_PUBLIC_WEB_BASE_URI="$ZH_WEB_BASE_URI" \
           SNOWPACK_PUBLIC_STATIC_BASE_URI="$ZH_STATIC_BASE_URI" \
-            npx snowpack build --config snowpack.config.mjs --verbose
+            npx snowpack build --config snowpack.config.mjs --reload --verbose
 
           echo "Build exit code: $?"
 
