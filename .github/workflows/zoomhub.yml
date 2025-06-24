@@ -213,8 +213,8 @@ jobs:
 
           echo "Build exit code: $?"
 
-          echo "Checking if frontend/bingo exists:"
-          ls -laR frontend/bingo || echo "frontend/bingo directory not found"
+          echo "Checking if frontend/build exists:"
+          ls -laR frontend/build || echo "frontend/build directory not found"
 
           echo '=========================================================='
           echo 'PRE: Haskell file deletion'
@@ -224,7 +224,7 @@ jobs:
           # NOTE: Delete Haskell source code. This directory is only mounted in
           # Snowpack configuration to enable Tailwind CSS ’purge’ feature. These
           # files are not meant to be shipped to the public website.
-          rm -rf frontend/bingo/__DELETE_ME__
+          rm -rf frontend/build/__DELETE_ME__
 
           echo '=========================================================='
           echo 'POST: Haskell file deletion'
