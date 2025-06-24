@@ -11,7 +11,7 @@ jobs:
       - name: Cache process-content Node.js dependencies
         uses: actions/cache@v4
         env:
-          cache-name: process-content-node-dependencies
+          cache-name: process-content-node-dependencies-v2
         with:
           path: process-content/.npm
           key: process-content-build-v2-${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('process-content/package-lock.json') }}
@@ -202,11 +202,14 @@ jobs:
           echo "Snowpack version:"
           npx snowpack --version
 
+          echo "Snowpack configuration:"
+          cat snowpack.config.mjs
+
           echo "Running snowpack build..."
           SNOWPACK_PUBLIC_API_BASE_URI="$ZH_API_BASE_URI" \
           SNOWPACK_PUBLIC_WEB_BASE_URI="$ZH_WEB_BASE_URI" \
           SNOWPACK_PUBLIC_STATIC_BASE_URI="$ZH_STATIC_BASE_URI" \
-            npx snowpack build --verbose
+            npx snowpack build --verbose --out frontend/build
 
           echo "Build exit code: $?"
 
