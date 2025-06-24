@@ -6,7 +6,7 @@ export default {
     src: "/__DELETE_ME__/haskell",
   },
   buildOptions: {
-    out: "frontend/build",
+    out: "./frontend/build",
   },
   devOptions: {
     output: "stream", // don't clear terminal
