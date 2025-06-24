@@ -310,16 +310,7 @@ jobs:
             workspace
 
       - name: Copy public files to workspace
-        run: |
-          if [ -d "frontend/build" ]; then
-            cp --recursive frontend/build workspace/public
-          elif [ -d "build" ]; then
-            echo "WARNING: Build output found in root directory instead of frontend/build"
-            cp --recursive build workspace/public
-          else
-            echo "ERROR: No build output found!"
-            exit 1
-          fi
+        run: cp --recursive frontend/build workspace/public
 
       - name: Copy binaries workspace
         run: cp bin/* workspace
