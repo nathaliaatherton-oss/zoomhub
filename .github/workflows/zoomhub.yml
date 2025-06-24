@@ -150,7 +150,7 @@ jobs:
         id: cache-node_modules
         uses: actions/cache/restore@v4
         env:
-          cache-name: cache-node_modules-v2
+          cache-name: cache-node_modules-v3
         with:
           path: node_modules
           key: web-build-v2-${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
@@ -188,7 +188,7 @@ jobs:
         if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: actions/cache/save@v4
         env:
-          cache-name: cache-node_modules-v2
+          cache-name: cache-node_modules-v3
         with:
           path: node_modules
           key: web-build-v2-${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
