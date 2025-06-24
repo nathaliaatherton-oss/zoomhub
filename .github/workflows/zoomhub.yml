@@ -146,9 +146,9 @@ jobs:
             web-build-v2-${{ runner.os }}-${{ env.cache-name }}-
             web-build-v2-${{ runner.os }}-
 
-      - name: Cache Node.js dependencies
+      - name: Restore Node.js dependencies cache
         id: cache-node_modules
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         env:
           cache-name: cache-node_modules-v2
         with:
@@ -183,6 +183,15 @@ jobs:
           npm ci --prefer-offline --no-audit --progress=false
 
           echo "Node.js dependencies installed with exit code: $?"
+
+      - name: Save Node.js dependencies cache
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        env:
+          cache-name: cache-node_modules-v2
+        with:
+          path: node_modules
+          key: web-build-v2-${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
 
       - name: Build frontend
         run: |
