@@ -3,7 +3,7 @@ export default {
     "frontend/public": "/",
     "frontend/src": "/scripts",
     "frontend/styles": "/styles",
-    src: "/__DELETE_ME__/haskell",
+    "src": "/__DELETE_ME__/haskell", // prettier-ignore
   },
   buildOptions: {
     out: "frontend/build",
