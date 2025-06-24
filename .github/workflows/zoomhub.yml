@@ -214,7 +214,7 @@ jobs:
           echo "Build exit code: $?"
 
           echo "Checking if frontend/build exists:"
-          ls -laR frontend/build || echo "frontend/build directory not found"
+          ls -laR frontend/build
 
           echo '=========================================================='
           echo 'PRE: Haskell file deletion'
