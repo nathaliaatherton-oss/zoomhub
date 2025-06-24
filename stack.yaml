@@ -19,5 +19,4 @@ flags: {}
 extra-package-dbs: []
 
 # Stack cache optimization settings
-stack-no-global: true
 work-dir: .stack-work
