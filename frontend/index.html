@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ZoomHub · Share and view full-resolution images easily</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href="%VITE_WEB_BASE_URI%" />
+
+    <meta name="theme-color" content="#171717" />
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      href="/apple-touch-icon-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/apple-touch-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/apple-touch-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/apple-touch-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/apple-touch-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="167x167"
+      href="/apple-touch-icon-167x167.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-touch-icon-180x180.png"
+    />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XLBYM4SR3W"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag("js", new Date())
+
+      gtag("config", "G-XLBYM4SR3W")
+    </script>
+
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/global.css" />
+    <style>
+      /* Prevent blue outline: https://github.com/openseadragon/openseadragon/issues/893*/
+      .openseadragon-canvas:focus {
+        outline: none;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-900 relative">
+    <a id="create"></a>
+    <header
+      class="bg-gray-900 border-b-2 md:border-b-0 md:border-t-2 border-orange-500 fixed z-10 w-full"
+    >
+      <div class="container mx-auto px-4 flex justify-between items-center">
+        <div class="inline-flex items-center h-10 md:h-16">
+          <a href="/"
+            ><div
+              class="bg-orange-500 mr-1 rounded-full w-4 h-4 md:w-7 md:h-7"
+            ></div
+          ></a>
+          <h1
+            class="text-xl md:text-4xl tracking-tighter text-gray-100 font-bold select-none inline-block"
+          >
+            <a href="/">ZoomHub</a>
+          </h1>
+        </div>
+        <nav class="inline-flex">
+          <a
+            href="/showcase/ecommerce/watches"
+            class="nav-item border-0 border-r-2 border-gray-600 whitespace-nowrap hidden md:block"
+            >Showcase: E-commerce</a
+          >
+          <a href="#create" class="nav-item border-0 border-r-2 border-gray-600"
+            >Create</a
+          >
+          <a href="#embed" class="nav-item border-0 border-r-2 border-gray-600"
+            >Embed</a
+          >
+          <a href="#api" class="nav-item pr-0">API</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="relative">
+      <div
+        id="hero-image"
+        class="w-full bg-black"
+        style="height: calc(100vh - 60px)"
+      ></div>
+      <div
+        id="create-container"
+        class="absolute inset-0 pointer-events-none grid grid-cols-1 place-items-center place-content-center"
+      ></div>
+      <div class="absolute top-14 md:top-20 left-5 right-5 text-right">
+        <button class="btn btn-secondary btn-sm" id="hero-mode-toggle">
+          Try demo
+        </button>
+      </div>
+      <div class="absolute bottom-12 left-5 right-5">
+        <div id="hero-toolbar" class="hidden"></div>
+      </div>
+    </div>
+
+    <main class="container mx-auto px-4 min-h-screen flex flex-col">
+      <div class="text-center">
+        <a href="#embed" class="text-gray-400 hover:text-white mt-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8 inline-block"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </a>
+      </div>
+      <a name="embed"></a>
+      <section class="mt-14 md:mt-20">
+        <h1
+          class="text-2xl lg:text-3xl text-gray-50 font-semibold tracking-tighter"
+        >
+          Embed
+        </h1>
+        <p class="text-gray-100 mt-3">
+          Embed a ZoomHub image on your website with the following HTML code:
+        </p>
+
+        <pre
+          class="code-listing"
+        >&lt;script src=&quot;%VITE_WEB_BASE_URI%/<span class="code-highlight">{id}</span>.js?width=auto&height=400px&quot;&gt;&lt;/script&gt;</pre>
+
+        <p class="text-gray-100 mt-3">
+          Replace
+          <code class="code-highlight">{id}</code> with the ID in the email you
+          received from us. You can customize the
+          <code class="code-highlight">width</code> and
+          <code class="code-highlight">height</code> of the embed.
+        </p>
+      </section>
+
+      <hr class="border-gray-700 mt-14 md:mt-20" />
+
+      <a name="api"></a>
+      <section class="mt-14 md:mt-20">
+        <h1
+          class="text-2xl lg:text-3xl text-gray-50 font-semibold tracking-tighter"
+        >
+          API
+        </h1>
+        <p class="text-gray-100 mt-3">
+          ZoomHub has a
+          <a
+            class="link"
+            href="https://github.com/zoomhub/zoomhub/blob/main/API.md"
+            >REST API</a
+          >
+          that lets you easily convert all your images programmatically.
+        </p>
+
+        <p class="text-gray-100 mt-3">
+          We currently require a valid
+          <span class="text-orange-500 font-medium">email</span> to prevent
+          abuse. If you need to convert a large number of images, please
+          <a
+            href="mailto:daniel@zoomhub.net?subject=ZoomHub: High volume API access&body=Hi Daniel,"
+            class="link"
+            >request high volume access</a
+          >.
+        </p>
+
+        <p class="mt-4">
+          <a
+            class="btn btn-secondary btn-sm"
+            href="https://github.com/zoomhub/zoomhub/blob/main/API.md"
+            >ZoomHub API reference</a
+          >
+        </p>
+
+        <h2 class="text-lg font-bold text-gray-100 mt-6">
+          Example: <code>curl</code>
+        </h2>
+        <pre
+          class="code-listing"
+        >&gt; curl --location '%VITE_API_BASE_URI%/v1/content?url=<span class="code-highlight">{url}</span>&email=<span class="code-highlight">{email}</span>'
+
+{
+  "id":"<span class="code-highlight">{id}</span>",
+  "url": "<span class="code-highlight">{url}</span>",
+  "shareUrl": "%VITE_WEB_BASE_URI%/<span class="code-highlight">{id}</span>",
+  "embedHtml":"&lt;script src=\"%VITE_WEB_BASE_URI%/<span class="code-highlight">{id}</span>.js?width=auto&height=400px\"&gt;&lt;/script&gt;",
+  "dzi": null,
+  "ready":false,
+  "progress": 0,
+  "failed": false,
+  "verified": false
+}</pre>
+      </section>
+
+      <div class="text-center my-4">
+        <a href="#create" class="text-gray-400 hover:text-white mt-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8 inline-block"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 15l7-7 7 7"
+            />
+          </svg>
+        </a>
+      </div>
+    </main>
+
+    <script src="%VITE_STATIC_BASE_URI%/scripts/openseadragon/3.0.0-zoomhub/openseadragon.min.js"></script>
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>
