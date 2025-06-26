@@ -4,16 +4,12 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  root: '.', 
-  publicDir: 'public',
-  build: {
-    outDir: 'build',
-    emptyOutDir: true,
-  },
   server: {
     port: 8080,
   },
-  envPrefix: 'VITE_',
+  css: {
+    postcss: './postcss.config.js',
+  },
   resolve: {
     alias: {
       // Map the Haskell source for Tailwind purging

@@ -211,8 +211,8 @@ jobs:
 
           echo "Build exit code: $?"
 
-          echo "Checking if frontend/build exists:"
-          ls -laR frontend/build
+          echo "Checking if frontend/dist exists:"
+          ls -laR frontend/dist
 
           echo '=========================================================='
           echo 'PRE: Haskell file deletion'
@@ -220,9 +220,9 @@ jobs:
           echo '=========================================================='
 
           # NOTE: Delete Haskell source code. This directory is only mounted in
-          # Snowpack configuration to enable Tailwind CSS ’purge’ feature. These
+          # Vite configuration to enable Tailwind CSS ’purge’ feature. These
           # files are not meant to be shipped to the public website.
-          rm -rf frontend/build/__DELETE_ME__
+          rm -rf frontend/dist/__DELETE_ME__
 
           echo '=========================================================='
           echo 'POST: Haskell file deletion'
@@ -308,7 +308,7 @@ jobs:
             workspace
 
       - name: Copy public files to workspace
-        run: cp --recursive frontend/build workspace/public
+        run: cp --recursive frontend/dist workspace/public
 
       - name: Copy binaries workspace
         run: cp bin/* workspace
